@@ -1,0 +1,38 @@
+
+Elemento	Selector elegido	Tipo	Razón
+Usuario (input)	#user-name	CSS	id único y semántico
+Usuario (input)	//*[@id='user-name']	XPath	Respaldo si el id es removido
+Password (input)	#password	CSS	id único y semántico
+Password (input)	//input[@type='password']	XPath	Atributo estable, independiente del layout
+Botón Login	.btn_action	CSS	Clase exclusiva del botón de submit
+Botón Login	//input[@type='submit']	XPath	Atributo estable, independiente del texto
+
+-----------------
+
+============================================================
+ESTRATEGIA DE QA: VALIDACIÓN SIN CONSUMO DE RECURSOS / API TIERS
+============================================================
+
+REGLA: No crear cuentas ni consumir créditos (terceros) mientras se aprende.
+
+MÉTODO DE IMITACIÓN (Lo que hacemos):
+
+1. LÓGICA (Backend / Core):
+   - Testeamos con Pytest + Python puro de forma local (100% gratis).
+   - Ej: Calculadora modular (Clase 04).
+
+2. ESTRUCTURA (Frontend / DOM):
+   - Testeamos con DevTools en el navegador (F12) -> Console.
+   - Usamos document.querySelector() y $x() para "imitar" lo que haría Selenium.
+   - Si el nodo se pinta de color (ej. .style.border = 'red'), Selenium lo encontrará.
+   - Ej: SauceDemo (Clase 06).
+
+3. INTEGRACIÓN (Selenium WebDriver):
+   - Solo apuntamos a Demos Públicas específicas de QA:
+     * https://www.saucedemo.com/ (Sauce Labs - Creada para testing)
+     * https://the-internet.herokuapp.com/ (Zero cost)
+   - NUNCA apuntar a staging/producción real mientras se estudia.
+
+CONCLUSIÓN:
+Si un selector funciona en la Consola de DevTools, funcionará en Selenium. 
+No necesitamos ejecutar la suite completa en la nube hasta que sea estrictamente necesario por trabajo.

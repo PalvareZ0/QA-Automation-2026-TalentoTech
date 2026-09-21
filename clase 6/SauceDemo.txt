@@ -1,0 +1,17 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+# Abre el navegador
+driver = webdriver.Chrome()
+driver.get("https://www.saucedemo.com/")
+
+# Usa los selectores que acabas de documentar en la Clase 06
+driver.find_element(By.ID, "user-name").send_keys("standard_user")
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.CSS_SELECTOR, ".btn_action").click()
+
+# Verifica
+assert "inventory" in driver.current_url
+driver.quit()
+
+abrír la consola con F12, correr los snippets de JavaScript de arriba, anotár los resultados en selectores-talento.md

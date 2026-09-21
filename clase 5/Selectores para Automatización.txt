@@ -1,0 +1,12 @@
+Selectores para Automatización - Calculadora Modular
+Elemento	Atributo usado	Selector CSS	Notas
+Título principal	id	#titulo-principal	
+Formulario	id	#form-calculadora	
+Input Número 1	id	#num1	
+Input Número 2	id	#num2	
+Radio Sumar	id	#op-sumar	
+Radio Restar	id	#op-restar	
+Radio Multiplicar	id	#op-multiplicar	
+Radio Dividir	id	#op-dividir	
+Botón Calcular	id	#btn-calcular	
+Grupo Operaciones	name	input[name="operacion"]	Útil para iterar todos los radios
