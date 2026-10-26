@@ -1,0 +1,4 @@
+# Page Objects - Clase 9 POM
+from pages.login_page import LoginPage
+from pages.inventory_page import InventoryPage
+from pages.cart_page import CartPage

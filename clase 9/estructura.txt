@@ -1,0 +1,8 @@
+clase_9/
+├── pages/
+│   └── __init__.py
+├── tests/
+│   └── __init__.py
+├── reports/
+├── pytest.ini          ← marcadores (smoke, login, catalogo, carrito, regression)
+└── requirements.txt
