@@ -1,0 +1,32 @@
+# Reportes y logs (se regeneran en cada ejecución, NO se versionan)
+reports/
+logs/
+
+# Capturas de pantalla de fallos
+*.png
+!datos/**/*.png
+
+# Entornos virtuales de Python
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace

@@ -1,0 +1,10 @@
+from faker import Faker
+fake = Faker('es_ES')
+
+@pytest.mark.parametrize("nombre, trabajo", [
+    (fake.name(), fake.job()),
+    (fake.name(), fake.job()),
+    (fake.name(), fake.job()),
+])
+def test_create_user_faker(nombre, trabajo):
+    # ... mismo cuerpo que arriba

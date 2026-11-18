@@ -1,0 +1,13 @@
+# Artefactos generados por la suite (el contenido no se versiona,
+# pero las carpetas sí, gracias al .gitkeep)
+reports/*
+!reports/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

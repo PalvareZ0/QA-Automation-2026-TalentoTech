@@ -1,0 +1,94 @@
+# .github/workflows/ci.yml — Pipeline de CI/CD con GitHub Actions (Clase 15, QA-199)
+#
+# Qué hace:
+#   1. Se dispara en cada push o pull_request a main/develop.
+#   2. Instala Python 3.12 y las dependencias del proyecto.
+#   3. Ejecuta TODA la suite (Pytest UI + API + Behave BDD).
+#   4. Sube los reportes HTML y los logs como artefactos (90 días).
+#
+# Para activarlo: subí este archivo a tu repo y hacé push. GitHub hace el resto.
+
+name: CI TalentoLab
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+# Permite cancelar ejecuciones viejas del mismo branch cuando llega un push nuevo
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Tests UI + API + BDD
+    runs-on: ubuntu-latest
+
+    env:
+      PYTHON_VERSION: '3.12'
+      PIP_CACHE: ~/.cache/pip
+
+    steps:
+      # 1) Bajar el código del repositorio
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      # 2) Cachear las dependencias de pip (acelera el pipeline ~2 min)
+      - name: Cache dependencias de pip
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PIP_CACHE }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      # 3) Instalar Python
+      - name: Instalar Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # 4) Instalar Google Chrome (Selenium lo usa para los tests UI)
+      - name: Instalar Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      # 5) Instalar las dependencias del proyecto
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 6) Crear carpetas de salida (evita que el upload-artifact falle)
+      - name: Crear carpetas de reportes y logs
+        run: mkdir -p reports logs
+
+      # 7) Ejecutar los tests (UI + API + BDD en una sola corrida)
+      - name: Ejecutar Pytest (UI + API + BDD wrapper)
+        run: pytest tests/ tests_api/ tests_behave/ -v --maxfail=5
+
+      # 8) Ejecutar Behave directamente (reportes BDD separados)
+      - name: Ejecutar Behave (suite BDD)
+        if: always()  # corre aunque Pytest haya fallado, para tener evidencia BDD
+        run: |
+          behave -f json -o reports/behave.json -f html -o reports/behave.html -f pretty
+
+      # 9) Subir reportes HTML como artefacto (disponible 90 días)
+      - name: Subir reporte HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report
+          path: reports/
+          retention-days: 90
+
+      # 10) Subir logs como artefacto
+      - name: Subir log de la suite
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: suite-log
+          path: logs/
+          retention-days: 90

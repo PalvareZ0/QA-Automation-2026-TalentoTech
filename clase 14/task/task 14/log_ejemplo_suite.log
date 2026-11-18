@@ -1,0 +1,35 @@
+20:25:30 INFO talentolab – Iniciando login con usuario: standard_user
+20:25:31 INFO talentolab – Verificando redirección a inventory.html
+20:25:31 INFO talentolab – Login exitoso, test terminado
+20:25:31 INFO talentolab – Iniciando login con credenciales inválidas
+20:25:32 INFO talentolab – Mensaje de error mostrado correctamente
+20:25:32 INFO talentolab – Ejecutando test de demostración (falla a propósito)
+20:25:33 INFO talentolab – GET https://jsonplaceholder.typicode.com/users/1
+20:25:33 INFO talentolab – Soft-asserts completados (6 validaciones)
+20:25:33 INFO talentolab – POST https://jsonplaceholder.typicode.com/posts con payload: {'title': 'QA-145 Reportes y Logging', 'body': 'Demo', 'userId': 1}
+20:25:33 INFO talentolab – Recurso creado con id: 101
+20:25:33 INFO talentolab – Intento número 1 de test_demo_retry_flaky
+20:25:34 INFO talentolab – Intento número 2 de test_demo_retry_flaky
+20:25:35 INFO talentolab – BDD: suite iniciada (navegador abierto)
+20:25:35 INFO talentolab – BDD: ▶ escenario: Login exitoso con credenciales válidas
+20:25:35 INFO talentolab – BDD: página de login abierta
+20:25:41 INFO talentolab – BDD: credenciales enviadas (usuario='standard_user')
+20:25:41 INFO talentolab – BDD: verificando URL https://www.saucedemo.com/inventory.html
+20:25:41 INFO talentolab – BDD: título visible 'Products'
+20:25:41 INFO talentolab – BDD: escenario 'Login exitoso con credenciales válidas' terminó → Status.passed
+20:25:41 INFO talentolab – BDD: suite finalizada (navegador cerrado)
+20:25:42 INFO talentolab – BDD: suite iniciada (navegador abierto)
+20:25:42 INFO talentolab – BDD: ▶ escenario: Agregar un producto al carrito
+20:25:47 INFO talentolab – BDD: login automático como standard_user
+20:25:47 INFO talentolab – BDD: en la página de inventario
+20:25:47 INFO talentolab – BDD: producto agregado 'Sauce Labs Backpack'
+20:25:48 INFO talentolab – BDD: contador del carrito = 1
+20:25:48 INFO talentolab – BDD: escenario 'Agregar un producto al carrito' terminó → Status.passed
+20:25:48 INFO talentolab – BDD: ▶ escenario: Agregar múltiples productos al carrito
+20:25:53 INFO talentolab – BDD: login automático como standard_user
+20:25:53 INFO talentolab – BDD: en la página de inventario
+20:25:56 INFO talentolab – BDD: producto agregado 'Sauce Labs Backpack'
+20:25:59 INFO talentolab – BDD: producto agregado 'Sauce Labs Bike Light'
+20:25:59 INFO talentolab – BDD: contador del carrito = 2
+20:25:59 INFO talentolab – BDD: escenario 'Agregar múltiples productos al carrito' terminó → Status.passed
+20:25:59 INFO talentolab – BDD: suite finalizada (navegador cerrado)

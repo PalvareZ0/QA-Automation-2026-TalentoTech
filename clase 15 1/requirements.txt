@@ -1,0 +1,21 @@
+# Dependencias del framework de automatización de pruebas
+# Instalar con:  pip install -r requirements.txt
+
+# Framework de testing y reportes (Clases 4, 13)
+pytest>=8.0
+pytest-html>=4.0
+pytest-rerunfailures>=14.0
+pytest-check>=2.3
+
+# Automatización UI con Selenium (Clases 7-10)
+selenium>=4.20
+
+# Automatización de API (Clases 11-12)
+requests>=2.31
+
+# Generación de datos aleatorios (Clase 10)
+faker>=25.0
+
+# BDD con Behave (Clase 14)
+behave>=1.2.7
+behave-html-formatter>=0.9.10

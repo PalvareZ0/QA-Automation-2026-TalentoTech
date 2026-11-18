@@ -1,0 +1,8 @@
+[pytest]
+markers =
+    smoke: Tests criticos de humo (se ejecutan primero)
+    login: Tests de funcionalidad de login
+    catalogo: Tests de inventario/catalogo
+    carrito: Tests de carrito de compras
+    regression: Tests de regresion
+addopts = -v

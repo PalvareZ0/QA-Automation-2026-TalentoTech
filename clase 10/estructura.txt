@@ -1,0 +1,6 @@
+clase_10/
+├── pages/          ← (copiado de clase 9, sin cambios)
+├── tests/          ← (vamos a crear tests nuevos parametrizados)
+├── datos/          ← 🆕 CSV + JSON
+├── utils/          ← 🆕 funciones lectoras
+├── reports/
